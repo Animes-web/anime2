@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações de Animes</title>
+    <link rel="icon" href="IMG/perfil.jpg" type="image/x-icon">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.anime {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin: 0;
+}
+
+.rating {
+    margin: 10px 0;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.star.selected {
+    color: gold;
+}
+
+.average-rating {
+    font-weight: bold;
+}
+
+#auth-container {
+    margin-bottom: 20px;
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            background: linear-gradient(135deg, #ff4081, #82aaff);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #82aaff, #ff4081);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+        }
+</style>
+<nav>
+    <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="animes.html">Animes</a></li>
+        <li><a href="manga.html">Mangás</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="publication.html">Publicações</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="shorts.html">Shorts</a></li>
+        <li><a href="teste.html"></a>Avaliar</li>
+    </ul>
+    </nav>
+<body>
+    <div class="container">
+        <h1>Avaliações de Animes</h1>
+        <div id="auth-container">
+            <h2 id="auth-header">Login</h2>
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button id="auth-button">Entrar</button>
+            <button id="register-button">Registrar</button>
+            <p id="auth-message"></p>
+        </div>
+        <div id="anime-list" class="hidden">
+            <!-- Lista de animes será gerada aqui -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

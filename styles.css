@@ -1,0 +1,85 @@
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: #000;
+   color: #FFF;
+   font-family: 'Roboto', sans-serif;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   min-height: 100vh;
+   overflow-x: hidden;
+}
+
+header {
+   background: linear-gradient(90deg, #1a1a1a, #333);
+   width: 100%;
+   padding: 1rem 0;
+   text-align: center;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+   font-size: 2rem;
+   letter-spacing: 2px;
+   text-transform: uppercase;
+   color: #0f0;
+}
+
+main {
+   flex: 1;
+   padding: 2rem;
+   width: 100%;
+   max-width: 1200px;
+   text-align: center;
+}
+
+.main-image, .gif-image {
+   max-width: 100%;
+   height: auto;
+   margin-bottom: 2rem;
+}
+
+.character-list p a {
+   color: rgb(0, 187, 0)(0, 255, 255);
+   text-decoration: none;
+   font-size: 1.2rem;
+}
+
+.character-list p a:hover {
+   text-decoration: underline;
+}
+
+.futuristic-btn {
+   display: inline-block;
+   margin: 1rem 0;
+   padding: 0.5rem 1rem;
+   background-color: #0f0;
+   color: #000;
+   border: none;
+   border-radius: 5px;
+   text-decoration: none;
+   transition: background-color 0.3s;
+}
+
+.futuristic-btn:hover {
+   background-color: #0b0;
+}
+
+footer {
+   background: linear-gradient(90deg, #333, #1a1a1a);
+   width: 100%;
+   padding: 1rem 0;
+   text-align: center;
+   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+   color: #0f0;
+   font-size: 1rem;
+}

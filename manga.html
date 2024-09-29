@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes.web-Mangá</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="icon" href="IMG/perfil.jpg" type="image/x-icon">
+    <style>
+         body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0b0;
+        }
+        .manga-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+        .manga {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px #0b0(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .manga:hover {
+            transform: translateY(-5px);
+        }
+        .manga img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .manga h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #0b0;
+        }
+        .manga p {
+            font-size: 1rem;
+            color: #0b0;
+            margin: 5px 0;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            background: linear-gradient(135deg, #ff4081, #82aaff);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #82aaff, #ff4081);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<nav>
+    <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="animes.html">Animes</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="publication.html">Publicações</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+    </ul>
+</nav>
+<body>
+    <div class="container">
+        <h1>Animes.web</h1>
+        <div class="manga-list">
+            <div class="manga">
+                <img src="IMG/tokyo.jpg" alt="Tokyo Ghoul">
+                <h2>Tokyo Ghoul</h2>
+                <p>Autor: Sui Ishida</p>
+                <p>Gênero: Horror, Mistério, Psicológico, Seinen, Sobrenatural</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/atack.jpg" alt="Attack on Titan">
+                <h2>Attack on Titan</h2>
+                <p>Autor: Hajime Isayama</p>
+                <p>Gênero: Ação, Drama, Fantasia, Horror, Mistério, Shounen, Sobrenatural</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/naruto.jpg" alt="Naruto">
+                <h2>Naruto</h2>
+                <p>Autor: Masashi Kishimoto</p>
+                <p>Gênero: Ação, Aventura, Artes Marciais, Comédia, Drama, Fantasia, Shounen, Superpoderes</p>
+            </div>
+            
+            <div class="manga">
+                <img src="IMG/one piece.jpg" alt="One Piece">
+                <h2>One Piece</h2>
+                <p>Autor: Eiichiro Oda</p>
+                <p>Gênero: Ação, Aventura, Comédia, Drama, Fantasia, Shounen, Superpoderes</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/note.jpg" alt="Death Note">
+                <h2>Death Note</h2>
+                <p>Autor: Tsugumi Ohba</p>
+                <p>Gênero: Mistério, Psicológico, Sobrenatural, Suspense, Thriller</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/demon.jpg" alt="Demon Slayer">
+                <h2>Demon Slayer</h2>
+                <p>Autor: Koyoharu Gotouge</p>
+                <p>Gênero: Ação, Demônios, Shounen, Sobrenatural</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/my.jpg" alt="My Hero Academia">
+                <h2>My Hero Academia</h2>
+                <p>Autor: Kouhei Horikoshi</p>
+                <p>Gênero: Ação, Comédia, Escolar, Shounen, Superpoderes</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/juju.jpg" alt="Jujutsu Kaisen">
+                <h2>Jujutsu Kaisen</h2>
+                <p>Autor: Gege Akutami</p>
+                <p>Gênero: Ação, Demônios, Escolar, Shounen, Sobrenatural</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/the.jpg" alt="The Promised Neverland">
+                <h2>The Promised Neverland</h2>
+                <p>Autor: Kaiu Shirai</p>
+                <p>Gênero: Drama, Mistério, Psicológico, Shounen, Sobrenatural</p>
+            </div>
+            <div class="manga">
+                <img src="IMG/black.jpg" alt="Black Clover">
+                <h2>Black Clover</h2>
+                <p>Autor: Yūki Tabata</p>
+                <p>Gênero: Ação, Comédia, Fantasia, Magia, Shounen</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

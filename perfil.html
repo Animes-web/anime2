@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar/Editar Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" href="IMG/perfil.jpg" type="image/x-icon">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1d2b64, #f8cdda, #9c27b0);
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f0f0f0;
+        }
+
+        button {
+            background-color: #0b0;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0a0;
+        }
+
+        #profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px 0;
+            border: 2px solid #f0f0f0;
+            object-fit: cover;
+        }
+
+        .info-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: left;
+            display: none; /* Inicialmente oculto */
+        }
+
+        .info-container h2 {
+            text-align: center;
+            margin: 0 0 10px;
+        }
+
+        .delete-button {
+            background-color: #f00;
+        }
+
+        .delete-button:hover {
+            background-color: #c00;
+        }
+        
+        .edit-button {
+            background-color: #00f;
+        }
+
+        .edit-button:hover {
+            background-color: #008;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            background: linear-gradient(135deg, #ff4081, #82aaff);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #82aaff, #ff4081);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<nav>
+    <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="manga.html">Mangás</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="publication.html">Publicações</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="shorts.html">Shorts</a></li>
+        <li><a href="teste.html"></a>Avaliar</li>
+    </ul>
+</nav><br><br>
+<body>
+    <div class="form-container" id="form-container">
+        <h1>Criar/Editar Perfil</h1>
+        <img id="profile-pic" src="IMG/perfil.jpg" alt="Imagem de Perfil" style="display: none;">
+        <form id="profile-form" onsubmit="createProfile(event)">
+            <input type="text" id="full-name" placeholder="Nome Completo" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Telefone" required>
+            <textarea id="bio" placeholder="Escreva sua bio..." rows="4" required></textarea>
+            <input type="file" class="file-input" accept="image/*" onchange="previewImage(event)">
+            <button type="submit">Salvar Perfil</button>
+        </form>
+    </div>
+
+    <div id="info-display" class="info-container">
+        <h2>Perfil Criado</h2>
+        <img id="display-profile-pic" src="" alt="Imagem de Perfil" style="display: none;">
+        <p><strong>Nome:</strong> <span id="display-name"></span></p>
+        <p><strong>Email:</strong> <span id="display-email"></span></p>
+        <p><strong>Telefone:</strong> <span id="display-phone"></span></p>
+        <p><strong>Bio:</strong> <span id="display-bio"></span></p>
+        <button class="edit-button" onclick="editProfile()">Editar Perfil</button>
+        <button class="delete-button" onclick="confirmDelete()">Excluir Perfil</button>
+    </div>
+
+    <script>
+        let isProfileCreated = false;
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const profilePic = document.getElementById('profile-pic');
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                profilePic.src = e.target.result;
+                profilePic.style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function createProfile(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const bio = document.getElementById('bio').value;
+            const profilePic = document.getElementById('profile-pic').src;
+
+            // Salvar dados no localStorage
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('bio', bio);
+            localStorage.setItem('profilePic', profilePic);
+
+            // Atualizar exibição das informações
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const fullName = localStorage.getItem('fullName');
+            const email = localStorage.getItem('email');
+            const phone = localStorage.getItem('phone');
+            const bio = localStorage.getItem('bio');
+            const profilePic = localStorage.getItem('profilePic');
+
+            if (fullName && email && phone && bio) {
+                document.getElementById('display-name').textContent = fullName;
+                document.getElementById('display-email').textContent = email;
+                document.getElementById('display-phone').textContent = phone;
+                document.getElementById('display-bio').textContent = bio;
+
+                const displayProfilePic = document.getElementById('display-profile-pic');
+                displayProfilePic.src = profilePic;
+                displayProfilePic.style.display = 'block';
+
+                document.getElementById('info-display').style.display = 'block';
+                document.getElementById('form-container').style.display = 'none';
+                isProfileCreated = true; // Marcar que o perfil foi criado
+            }
+        }
+
+        function editProfile() {
+            if (isProfileCreated) {
+                // Preencher o formulário com os dados atuais
+                document.getElementById('full-name').value = localStorage.getItem('fullName');
+                document.getElementById('email').value = localStorage.getItem('email');
+                document.getElementById('phone').value = localStorage.getItem('phone');
+                document.getElementById('bio').value = localStorage.getItem('bio');
+
+                // Exibir o formulário e ocultar as informações
+                document.getElementById('form-container').style.display = 'block';
+                document.getElementById('info-display').style.display = 'none';
+            }
+        }
+
+        function confirmDelete() {
+            if (confirm("Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.")) {
+                // Limpar localStorage
+                localStorage.removeItem('fullName');
+                localStorage.removeItem('email');
+                localStorage.removeItem('phone');
+                localStorage.removeItem('bio');
+                localStorage.removeItem('profilePic');
+
+                // Redefinir campos
+                document.getElementById('full-name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('bio').value = '';
+                document.getElementById('profile-pic').style.display = 'none';
+                document.getElementById('display-profile-pic').style.display = 'none';
+                document.getElementById('info-display').style.display = 'none';
+                document.getElementById('form-container').style.display = 'block';
+                isProfileCreated = false;
+            }
+        }
+
+        window.onload = function() {
+            updateDisplay(); // Atualiza a exibição com dados do localStorage
+            carregarAvatar();
+        };
+    </script>
+</body>
+</html>
